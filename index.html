@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ash | Portfolio</title>
+
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- google fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- jq -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- cool vid stuff -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+    <!-- my lovely css -->
+    <link rel="stylesheet" href="_assets/index.css">
+</head>
+
+<body class="bg-neutral-950 text-white">
+    <!-- nav -->
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/5 border-b border-white/10">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+            <h1 class="text-lg font-semibold tracking-tight">Ash.</h1>
+            <div class="hidden md:flex gap-6 text-sm opacity-80">
+                <span>About</span>
+                <span>Work</span>
+                <span>Software</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- top hero -->
+    <section class="hero relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="./_assets/grad.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-content text-center px-6">
+            <div class="glass px-8 py-6 rounded-2xl">
+                <h2 class="text-4xl md:text-6xl font-semibold tracking-tight">Hej, I'm Ash.</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="max-w-3xl mx-auto py-16 px-6 fade-in text-center">
+        <p class="text-neutral-300 text-lg leading-relaxed">
+            I'm a media production student focused on visual storytelling — film, design, and digital content.
+            My work combines clean composition, motion, and curiosity.
+        </p>
+    </section>
+
+    <!-- software -->
+    <section id="software" class="max-w-5xl mx-auto py-10 px-6 fade-in">
+        <h3 class="text-xl font-semibold mb-8 text-center">Software I Use</h3>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 place-items-center">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+                    class="software-icon w-8 h-8 mb-2" alt="Photoshop">
+                <p class="text-xs text-neutral-300">Photoshop</p>
+            </div>
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+                <img src="./_assets/pr.png" class="software-icon w-8 h-8 mb-2" alt="Premiere">
+                <p class="text-xs text-neutral-300">Premiere</p>
+            </div>
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+                <img src="./_assets/ae.png" class="software-icon w-8 h-8 mb-2" alt="After Effects">
+                <p class="text-xs text-neutral-300 text-center">After Effects</p>
+            </div>
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+                <img src="./_assets/dvr.png" class="w-8 h-8 mb-2" alt="Resolve">
+                <p class="text-xs text-neutral-300">Resolve</p>
+            </div>
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
+                    class="software-icon w-8 h-8 mb-2" alt="Illustrator">
+                <p class="text-xs text-neutral-300">Illustrator</p>
+            </div>
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                    class="software-icon w-8 h-8 mb-2" alt="Figma">
+                <p class="text-xs text-neutral-300">Figma</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- projects -->
+    <section id="work" class="max-w-6xl mx-auto py-16 px-6 fade-in">
+        <h3 class="text-xl font-semibold mb-8 text-center">Projects</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+                <img src="_assets/28sl.png" alt="Project 1" class="w-full h-auto object-cover">
+                <div class="p-4">
+                    <h4 class="text-lg font-medium mb-1">28 Minutes Later</h4>
+                    <p class="text-sm text-neutral-400">A short rendition of a 28 Days Later style film, made by our college class. Filmed by my classmates and edited in part by me and my classmate Abigail Pudney.</p>
+                </div>
+            </div>
+
+            <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+                <img src="/_assets/prem.png" alt="Project 1" class="w-full h-auto object-cover">
+                <div class="p-4">
+                    <h4 class="text-lg font-medium mb-1">Premonition</h4>
+                    <p class="text-sm text-neutral-400">A sci-fi short film made by MJC Productions. I edited and helped with set design, with Peterborough College's Game Design students making the VFX.</p>
+                </div>
+            </div>
+
+            <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+                <video controls playsinline class="w-full h-auto object-cover plyr">
+                    <source src="./_assets/Mafia_Ash_Trailer2.mp4" type="video/mp4" />
+                </video>
+                <div class="p-4">
+                    <h4 class="text-lg font-bold mb-1">MAFIA</h4>
+                    <p class="text-sm text-neutral-400">A trailer for a short college film called Mafia, based on the childhood
+                        game. Filmed on Blackmagic Ursa Mini 4K Pro cameras. Filmed and edited by me.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- showreel -->
+    <section class="max-w-6xl mx-auto py-16 px-6 fade-in">
+        <h3 class="text-3xl font-semibold mb-8 text-center">Showreel</h3>
+        <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+            <video controls playsinline class="w-full h-auto object-cover plyr2">
+                <source src="./_assets/Showreel.mp4" type="video/mp4" />
+            </video>
+    </section>
+
+        <!-- contact -->
+    <section id="contact" class="max-w-6xl mx-auto py-16 px-6 fade-in">
+            <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+                <div class="p-4">
+                    <h4 class="text-xl font-medium mb-1">Get in touch!</h4>
+                    <p class="text-md text-neutral-400">E: ash@caaproductions.tech</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="text-center py-8 text-neutral-500 text-xs fade-in">
+        © <span id="year"></span> Ash. All rights reserved.
+    </footer>
+
+    <!-- scripts -->
+    <script src="./_assets/pf.min.js"></script>
+</body>
+
+</html>
