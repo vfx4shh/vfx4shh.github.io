@@ -54,6 +54,7 @@
         width:2px;
         background:#fff;
         border-radius:1px;
+        animation:blink .9s infinite ease-in-out;
       }
       @keyframes blink { 0%,100% { opacity:0; } 50% { opacity:1; } }
       @media (prefers-reduced-motion: reduce) {
@@ -195,7 +196,21 @@
             <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
                 <div class="p-4">
                     <h4 class="text-xl font-medium mb-1">Get in touch!</h4>
-                    <p class="text-md text-neutral-400">E: ash@caaproductions.tech</p>
+                    <div class="flex items-center gap-3 text-md text-neutral-400">
+                        <span>E:</span>
+                        <button id="reveal-email" type="button" data-e="YXNoQGNhYXByb2R1Y3Rpb25zLnRlY2g=" class="underline hover:text-white">Press to reveal</button>
+                        <a id="email-link" class="hidden underline hover:text-white" rel="noopener noreferrer"></a>
+                        <button id="copy-email" type="button" class="hidden glass px-2 py-1 rounded text-xs">Copy</button>
+                    </div>
+                    <form id="contact-form" class="mt-6 grid sm:grid-cols-2 gap-4">
+                        <input type="text" id="cf-name" name="name" placeholder="Your name" class="glass w-full rounded-lg px-3 py-2 bg-white/5 text-white placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/20" required>
+                        <input type="email" id="cf-email" name="email" placeholder="Your email" class="glass w-full rounded-lg px-3 py-2 bg-white/5 text-white placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/20" required>
+                        <textarea id="cf-message" name="message" placeholder="Your message" class="glass sm:col-span-2 w-full rounded-lg px-3 py-2 h-28 bg-white/5 text-white placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/20" required></textarea>
+                        <input type="text" id="cf-website" name="website" class="hidden" autocomplete="off">
+                        <input type="hidden" id="cf-start" name="start">
+                        <button type="submit" class="sm:col-span-2 glass rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition text-white">Send</button>
+                        <div id="cf-status" class="sm:col-span-2 text-sm text-neutral-300" aria-live="polite"></div>
+                    </form>
                 </div>
             </div>
     </section>
@@ -257,10 +272,67 @@
           del(oldArr.length-1);
         }
       }
+      var btn=document.getElementById('reveal-email');
+      var link=document.getElementById('email-link');
+      var copy=document.getElementById('copy-email');
+      if(btn&&link&&copy){
+        btn.addEventListener('click',function(){
+          var e=btn.getAttribute('data-e');
+          try{
+            var addr=atob(e||'');
+            link.textContent=addr;
+            link.href='mailto:'+addr;
+            btn.classList.add('hidden');
+            link.classList.remove('hidden');
+            copy.classList.remove('hidden');
+          }catch(_){}
+        });
+        copy.addEventListener('click',function(){
+          var t=link.textContent||'';
+          if(!t) return;
+          if(navigator.clipboard&&navigator.clipboard.writeText){
+            navigator.clipboard.writeText(t).catch(function(){});
+          }else{
+            var ta=document.createElement('textarea');
+            ta.value=t;document.body.appendChild(ta);ta.select();
+            try{document.execCommand('copy');}catch(_){}
+            document.body.removeChild(ta);
+          }
+        });
+      }
+      var cf=document.getElementById('contact-form');
+      if(cf){
+        var start=document.getElementById('cf-start');
+        if(start){ start.value=Date.now(); }
+        cf.addEventListener('submit',function(ev){
+          ev.preventDefault();
+          var name=document.getElementById('cf-name');
+          var email=document.getElementById('cf-email');
+          var msg=document.getElementById('cf-message');
+          var hp=document.getElementById('cf-website');
+          var status=document.getElementById('cf-status');
+          var ok=true;
+          if(hp && hp.value) ok=false;
+          var elapsed=0; if(start){ elapsed=Date.now()-parseInt(start.value||'0'); }
+          if(elapsed<1500) ok=false;
+          if(!name || name.value.trim().length<2) ok=false;
+          var em=(email && email.value.trim())||'';
+          if(!email || !em.includes('@')) ok=false;
+          if(!msg || msg.value.trim().length<10) ok=false;
+          if(status){
+            if(ok){
+              status.textContent='Message ready (mock).';
+              cf.reset();
+              if(start){ start.value=Date.now(); }
+            }else{
+              status.textContent='Please check your details.';
+            }
+          }
+        });
+      }
     });
     </script>
     <script src="./assets/pf.min.js"></script>
 </body>
-
 
 </html>
