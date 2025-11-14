@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ash | About Me</title>
+
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- jq -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- my lovely css -->
+    <link rel="stylesheet" href="assets/index.css">
+    <style>
+        /* Glass morphism effect for cards */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Smooth fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Music player styling */
+        .music-player {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .play-button {
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive image */
+        .profile-img {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit; /* inherit border-radius from parent */
+        }
+
+        /* Ensure proper aspect ratio handling */
+        .aspect-square {
+            position: relative;
+            width: 100%;
+        }
+
+        .aspect-square > * {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Error state styling */
+        .error-state {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fecaca;
+        }
+
+        /* Loading state */
+        .loading {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { transition: none; }
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-950 text-white">
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/5 border-b border-white/10">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+            <h1 class="text-lg font-semibold tracking-tight">Ash.</h1>
+            <div class="hidden md:flex gap-6 text-sm opacity-80">
+                <a href="index.html" class="hover:opacity-100 transition-opacity">Home</a>
+                <a href="#" class="hover:opacity-100 transition-opacity opacity-100">About</a>
+                <a href="index.html#work" class="hover:opacity-100 transition-opacity">Work</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Profile -->
+    <section class="pt-24 pb-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Profile Picture -->
+                <div class="fade-in">
+                    <div class="group">
+                        <!-- 1:1 aspect ratio container for your photo -->
+                        <div class="aspect-square w-full max-w-sm mx-auto">
+                            <img 
+                                src="assets/mugshot.png" 
+                                alt="Profile picture of Ash" 
+                                class="profile-img w-full h-full rounded-2xl glass border border-white/10 group-hover:border-white/20 transition-all duration-300"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name and Intro -->
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+                        Hey, I'm Ash
+                    </h2>
+                    <p class="text-neutral-300 text-lg leading-relaxed mb-6">
+                        A passionate media production student with a love for visual storytelling, 
+                        creative technology, and crafting meaningful digital experiences.
+                    </p>
+                    <!-- Quick stats or tags -->
+                    <div class="flex flex-wrap gap-3">
+                        <span class="glass px-3 py-1 rounded-full text-sm">Videography</span>
+                        <span class="glass px-3 py-1 rounded-full text-sm">Editing</span>
+                        <span class="glass px-3 py-1 rounded-full text-sm">Photography</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Paragraph Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-3xl mx-auto fade-in">
+            <h3 class="text-2xl font-semibold mb-8 text-center">About Me</h3>
+            <div class="glass rounded-2xl p-8">
+                <p class="text-neutral-300 leading-relaxed mb-4">
+                    I'm currently in my second year of college, completing my Level 3 Extended BTEC Diploma in Creative Media Production.
+                    I have a strong foundation in media, with my experience prior to the course in editing and photography - my great grandad was a photographer for Ford for many years and taught me many tricks.
+                </p>
+                <p class="text-neutral-300 leading-relaxed mb-4">
+                    My best skill is editing; I have a good understanding of the process and like the creative freedom.
+                    I tend to opt for using Adobe After Effects, as it's the application I know best - and is very powerful.
+                </p>
+                <p class="text-neutral-300 leading-relaxed">
+                    When I'm not working on projects, I enjoy listening to music, coding and creating projects, or working.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apps & Tools Experience -->
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto fade-in">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Apps & Tools I Use</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Adobe Premiere Pro -->
+                <div class="glass rounded-xl p-4 text-center group hover:bg-white/10 transition-all duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg" 
+                         alt="Premiere Pro" class="w-12 h-12 mx-auto mb-2" loading="lazy" decoding="async">
+                    <p class="text-sm text-neutral-300">Premiere Pro</p>
+                </div>
+
+                <!-- After Effects -->
+                <div class="glass rounded-xl p-4 text-center group hover:bg-white/10 transition-all duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" 
+                         alt="After Effects" class="w-12 h-12 mx-auto mb-2" loading="lazy" decoding="async">
+                    <p class="text-sm text-neutral-300">After Effects</p>
+                </div>
+
+                <!-- DaVinci Resolve -->
+                <div class="glass rounded-xl p-4 text-center group hover:bg-white/10 transition-all duration-300">
+                    <img src="./assets/dvr.png" alt="DaVinci Resolve" class="w-12 h-12 mx-auto mb-2" loading="lazy" decoding="async">
+                    <p class="text-sm text-neutral-300">DaVinci Resolve</p>
+                </div>
+
+                <!-- Photoshop -->
+                <div class="glass rounded-xl p-4 text-center group hover:bg-white/10 transition-all duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" 
+                         alt="Photoshop" class="w-12 h-12 mx-auto mb-2" loading="lazy" decoding="async">
+                    <p class="text-sm text-neutral-300">Photoshop</p>
+                </div>
+
+                <!-- Illustrator -->
+                <div class="glass rounded-xl p-4 text-center group hover:bg-white/10 transition-all duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg" 
+                         alt="Illustrator" class="w-12 h-12 mx-auto mb-2" loading="lazy" decoding="async">
+                    <p class="text-sm text-neutral-300">Illustrator</p>
+                </div>
+
+                <!-- Figma -->
+                <div class="glass rounded-xl p-4 text-center group hover:bg-white/10 transition-all duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" 
+                         alt="Figma" class="w-12 h-12 mx-auto mb-2" loading="lazy" decoding="async">
+                    <p class="text-sm text-neutral-300">Figma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorite Song Widget -->
+    <section class="py-16 px-6">
+        <div class="max-w-2xl mx-auto fade-in">
+            <h3 class="text-2xl font-semibold mb-8 text-center">Currently Listening To</h3>
+            <div id="music-widget" class="music-player rounded-2xl p-6">
+                <!-- Loading state -->
+                <div id="music-loading" class="flex items-center justify-center py-8">
+                    <div class="loading text-neutral-400">Loading music...</div>
+                </div>
+                
+                <!-- Error state -->
+                <div id="music-error" class="hidden error-state rounded-lg p-4 text-center">
+                    <p class="text-sm">Could not load music preview. Please check your connection.</p>
+                </div>
+
+                <!-- Music player content -->
+                <div id="music-content" class="hidden">
+                    <div class="flex items-center gap-4 mb-4">
+                        <!-- Album artwork placeholder - replace with actual image -->
+                        <img id="album-art" 
+                             src="https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20music%20album%20cover%2C%20minimalist%20design%2C%20dark%20background%2C%20geometric%20shapes&image_size=square" 
+                             alt="Album artwork" 
+                             class="w-16 h-16 rounded-lg object-cover"
+                             loading="lazy"
+                             decoding="async">
+                        <div class="flex-1">
+                            <h4 id="song-title" class="font-medium text-white">Your Favorite Song</h4>
+                            <p id="artist-name" class="text-sm text-neutral-400">Artist Name</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Audio controls -->
+                    <div class="flex items-center gap-4">
+                        <button id="play-btn" class="play-button glass rounded-full w-12 h-12 flex items-center justify-center">
+                            <svg id="play-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                            </svg>
+                            <svg id="pause-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Progress bar -->
+                        <div class="flex-1">
+                            <div class="bg-white/10 rounded-full h-1.5">
+                                <div id="progress-bar" class="bg-white rounded-full h-1.5 transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-neutral-400 mt-1">
+                                <span id="current-time">0:00</span>
+                                <span id="total-time">0:30</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Spotify link placeholder - replace with actual Spotify URL -->
+                    <div class="mt-4 text-center">
+                        <a href="#" id="spotify-link" target="_blank" rel="noopener noreferrer" 
+                           class="text-sm text-neutral-400 hover:text-white transition-colors">
+                            Listen on Spotify →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 text-neutral-500 text-xs fade-in">
+        © <span id="year"></span> Ash. All rights reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Set current year
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Music player functionality
+            initializeMusicPlayer();
+        });
+
+        // Music player implementation with error handling
+        function initializeMusicPlayer() {
+            const audio = new Audio();
+            const playBtn = document.getElementById('play-btn');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const progressBar = document.getElementById('progress-bar');
+            const currentTimeEl = document.getElementById('current-time');
+            const totalTimeEl = document.getElementById('total-time');
+            const loadingEl = document.getElementById('music-loading');
+            const errorEl = document.getElementById('music-error');
+            const contentEl = document.getElementById('music-content');
+
+            let isPlaying = false;
+
+            // Placeholder data - replace with actual Spotify API data or static values
+            const songData = {
+                title: "I've Seen It",
+                artist: "Olivia Dean",
+                previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/cf/f0/7a/cff07a03-e97f-8b2e-ae09-5f1f1291989d/mzaf_16714492384331497468.plus.aac.p.m4a", // Replace with actual Spotify preview URL
+                spotifyUrl: "https://open.spotify.com/track/6tHVEMyRfxGgQuXRzl2yOF", // Replace with actual Spotify track URL
+                albumArt: "https://i.scdn.co/image/ab67616d0000b2739a336bfb6d40bbd90a507417"
+            };
+
+            // Initialize player with data
+            function setupPlayer() {
+                document.getElementById('song-title').textContent = songData.title;
+                document.getElementById('artist-name').textContent = songData.artist;
+                document.getElementById('album-art').src = songData.albumArt;
+                document.getElementById('spotify-link').href = songData.spotifyUrl;
+
+                // Set audio source with error handling
+                audio.src = songData.previewUrl;
+                
+                audio.addEventListener('loadedmetadata', function() {
+                    loadingEl.classList.add('hidden');
+                    contentEl.classList.remove('hidden');
+                    totalTimeEl.textContent = formatTime(audio.duration || 30);
+                });
+
+                audio.addEventListener('error', function(e) {
+                    console.error('Audio loading error:', e);
+                    loadingEl.classList.add('hidden');
+                    errorEl.classList.remove('hidden');
+                });
+
+                audio.addEventListener('timeupdate', updateProgress);
+                audio.addEventListener('ended', onAudioEnded);
+            }
+
+            // Play/Pause functionality
+            playBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    pauseAudio();
+                } else {
+                    playAudio();
+                }
+            });
+
+            function playAudio() {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
+                }).catch(error => {
+                    console.error('Playback error:', error);
+                    // Fallback: show error state
+                    errorEl.classList.remove('hidden');
+                    contentEl.classList.add('hidden');
+                });
+            }
+
+            function pauseAudio() {
+                audio.pause();
+                isPlaying = false;
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }
+
+            function onAudioEnded() {
+                isPlaying = false;
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                progressBar.style.width = '0%';
+                currentTimeEl.textContent = '0:00';
+            }
+
+            function updateProgress() {
+                if (audio.duration) {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = progress + '%';
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            }
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            // Initialize the player
+            setupPlayer();
+        }
+
+        // Handle navigation highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.getAttribute('href') === currentPage || 
+                    (currentPage === 'about.html' && link.getAttribute('href') === '#')) {
+                    link.classList.add('opacity-100');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

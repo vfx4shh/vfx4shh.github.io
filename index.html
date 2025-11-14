@@ -10,6 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap"
         rel="stylesheet">
@@ -23,6 +25,55 @@
 
     <!-- my lovely css -->
     <link rel="stylesheet" href="assets/index.css">
+    <style>
+      .gradient-shine {
+        background-image: linear-gradient(90deg, #e879f9, #d946ef, #a855f7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 200% 200%;
+        animation: shine 12s linear infinite;
+      }
+      @keyframes shine {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+      }
+      .typewriter {
+        position:relative;
+        display:inline-block;
+        vertical-align:bottom;
+        color:#fff;
+        min-width:1.2em; /* keep a stable inline-box */
+      }
+      .typewriter::after {
+        content:"";
+        position:absolute;
+        right:-2px;
+        top:10%;
+        height:80%;
+        width:2px;
+        background:#fff;
+        border-radius:1px;
+        animation:blink .9s infinite ease-in-out;
+      }
+      @keyframes blink { 0%,100% { opacity:0; } 50% { opacity:1; } }
+      @media (prefers-reduced-motion: reduce) {
+        .typewriter::after { animation:none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .typewriter { animation:none; border-right:none; }
+      }
+      .float-soft {
+        animation: float 8s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .gradient-shine, .float-soft { animation: none; }
+      }
+    </style>
 </head>
 
 <body class="bg-neutral-950 text-white">
@@ -31,9 +82,9 @@
         <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
             <h1 class="text-lg font-semibold tracking-tight">Ash.</h1>
             <div class="hidden md:flex gap-6 text-sm opacity-80">
-                <span>About</span>
-                <span>Work</span>
-                <span>Software</span>
+                <a href="/about" class="hover:opacity-100 transition-opacity">About</a>
+                <a href="#work" class="hover:opacity-100 transition-opacity">Work</a>
+                <a href="#software" class="hover:opacity-100 transition-opacity">Software</a>
             </div>
         </nav>
     </header>
@@ -44,60 +95,65 @@
             <source src="./assets/grad.mp4" type="video/mp4" />
         </video>
         <div class="hero-content text-center px-6">
-            <div class="glass px-8 py-6 rounded-2xl">
-                <h2 class="text-4xl md:text-6xl font-semibold tracking-tight">Hey, I'm Ash.</h2>
+            <div class="glass px-8 py-6 rounded-2xl float-soft">
+                <h2 class="text-4xl md:text-6xl font-semibold tracking-tight">
+                  <span id="greeting" class="bg-clip-text typewriter">Hej</span><span>, I'm Ash.</span>
+                </h2>
             </div>
         </div>
     </section>
 
     <!-- about -->
-    <section id="about" class="max-w-3xl mx-auto py-16 px-6 fade-in text-center">
+    <section id="about" class="max-w-3xl mx-auto py-16 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out text-center">
         <p class="text-neutral-300 text-lg leading-relaxed">
             I'm a media production student focused on visual storytelling — film, design, and digital content.
             My work combines clean composition, motion, and curiosity.
         </p>
+        <p class="mt-4 text-neutral-300 text-base leading-relaxed">
+            I specialize in editing, color grading, motion design, and sound, crafting cohesive narratives with tools like Premiere, After Effects, Resolve, and Photoshop. I aim for thoughtful pacing, striking visuals, and polish.
+        </p>
     </section>
 
     <!-- software -->
-    <section id="software" class="max-w-5xl mx-auto py-10 px-6 fade-in">
+    <section id="software" class="max-w-5xl mx-auto py-10 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out">
         <h3 class="text-xl font-semibold mb-8 text-center">Software I Use</h3>
         <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 place-items-center">
-            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3 transition hover:scale-105">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
-                    class="software-icon w-8 h-8 mb-2" alt="Photoshop">
+                    class="software-icon w-8 h-8 mb-2" alt="Photoshop" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300">Photoshop</p>
             </div>
-            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
-                <img src="./assets/pr.png" class="software-icon w-8 h-8 mb-2" alt="Premiere">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3 transition hover:scale-105">
+                <img src="./assets/pr.png" class="software-icon w-8 h-8 mb-2" alt="Premiere" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300">Premiere</p>
             </div>
-            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
-                <img src="./assets/ae.png" class="software-icon w-8 h-8 mb-2" alt="After Effects">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3 transition hover:scale-105">
+                <img src="./assets/ae.png" class="software-icon w-8 h-8 mb-2" alt="After Effects" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300 text-center">After Effects</p>
             </div>
-            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
-                <img src="./assets/dvr.png" class="w-8 h-8 mb-2" alt="Resolve">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3 transition hover:scale-105">
+                <img src="./assets/dvr.png" class="w-8 h-8 mb-2" alt="Resolve" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300">Resolve</p>
             </div>
-            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3 transition hover:scale-105">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
-                    class="software-icon w-8 h-8 mb-2" alt="Illustrator">
+                    class="software-icon w-8 h-8 mb-2" alt="Illustrator" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300">Illustrator</p>
             </div>
-            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3">
+            <div class="glass flex flex-col items-center justify-center aspect-square w-full max-w-[90px] p-3 transition hover:scale-105">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                    class="software-icon w-8 h-8 mb-2" alt="Figma">
+                    class="software-icon w-8 h-8 mb-2" alt="Figma" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300">Figma</p>
             </div>
         </div>
     </section>
 
     <!-- projects -->
-    <section id="work" class="max-w-6xl mx-auto py-16 px-6 fade-in">
+    <section id="work" class="max-w-6xl mx-auto py-16 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out">
         <h3 class="text-xl font-semibold mb-8 text-center">Projects</h3>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
-                <img src="assets/28sl.png" alt="Project 1" class="w-full h-auto object-cover">
+                <img src="assets/28sl.png" alt="28 Minutes Later" class="w-full h-auto object-cover" loading="lazy" decoding="async">
                 <div class="p-4">
                     <h4 class="text-lg font-medium mb-1">28 Minutes Later</h4>
                     <p class="text-sm text-neutral-400">A short rendition of a 28 Days Later style film, made by our college class. Filmed by my classmates and edited in part by me and my classmate Abigail Pudney.</p>
@@ -105,7 +161,7 @@
             </div>
 
             <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
-                <img src="/assets/prem.png" alt="Project 1" class="w-full h-auto object-cover">
+                <img src="assets/prem.png" alt="Premonition" class="w-full h-auto object-cover" loading="lazy" decoding="async">
                 <div class="p-4">
                     <h4 class="text-lg font-medium mb-1">Premonition</h4>
                     <p class="text-sm text-neutral-400">A sci-fi short film made by MJC Productions. I edited and helped with set design, with Peterborough College's Game Design students making the VFX.</p>
@@ -113,7 +169,7 @@
             </div>
 
             <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
-                <video controls playsinline class="w-full h-auto object-cover plyr">
+                <video controls preload="metadata" playsinline class="w-full h-auto object-cover plyr">
                     <source src="./assets/Mafia_Ash_Trailer2.mp4" type="video/mp4" />
                 </video>
                 <div class="p-4">
@@ -126,23 +182,23 @@
     </section>
 
     <!-- showreel -->
-    <section class="max-w-6xl mx-auto py-16 px-6 fade-in">
+    <section class="max-w-6xl mx-auto py-16 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out">
         <h3 class="text-3xl font-semibold mb-8 text-center">Showreel</h3>
         <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
-            <video controls playsinline class="w-full h-auto object-cover plyr2">
+            <video controls preload="metadata" playsinline class="w-full h-auto object-cover plyr2">
                 <source src="./assets/Showreel.mp4" type="video/mp4" />
             </video>
+        </div>
     </section>
 
         <!-- contact -->
-    <section id="contact" class="max-w-6xl mx-auto py-16 px-6 fade-in">
+    <section id="contact" class="max-w-6xl mx-auto py-16 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out">
             <div class="glass rounded-2xl overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
                 <div class="p-4">
                     <h4 class="text-xl font-medium mb-1">Get in touch!</h4>
                     <p class="text-md text-neutral-400">E: ash@caaproductions.tech</p>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- footer -->
@@ -151,8 +207,60 @@
     </footer>
 
     <!-- scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            e.target.classList.remove('opacity-0','translate-y-4');
+            e.target.classList.add('opacity-100','translate-y-0');
+            observer.unobserve(e.target);
+          }
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.fade-in').forEach(function(el){
+        observer.observe(el);
+      });
+      if(window.Plyr && !document.querySelector('.plyr__video-wrapper')){
+        try{
+          new Plyr('.plyr',{ratio:'16:9'});
+          new Plyr('.plyr2',{ratio:'16:9'});
+        }catch(_){}
+      }
+      var y=document.getElementById('year');
+      if(y && !y.textContent){ y.textContent=new Date().getFullYear(); }
+      // multilingual greeting
+      var greetings=["Hej","Hello","Bonjour","Hola","Ciao","こんにちは","안녕하세요","Goedemiddag"];
+      var idx=0;
+      var el=document.getElementById('greeting');
+      if(el){
+        el.classList.add('blink'); // start blinking
+        setInterval(function(){
+          idx=(idx+1)%greetings.length;
+          typeText(el,greetings[idx]);
+        },4000);
+        function typeText(el,newText){
+          var oldArr=el.textContent.split('');
+          var newArr=newText.split('');
+          var speed=60; // ms per char
+          // delete phase
+          function del(i){
+            if(i<0){ return add(0); }
+            el.textContent=oldArr.slice(0,i).join('');
+            setTimeout(function(){ del(i-1); },speed);
+          }
+          // add phase
+          function add(i){
+            if(i>newArr.length){ return; }
+            el.textContent=newArr.slice(0,i).join('');
+            setTimeout(function(){ add(i+1); },speed);
+          }
+          del(oldArr.length-1);
+        }
+      }
+    });
+    </script>
     <script src="./assets/pf.min.js"></script>
 </body>
-
 
 </html>
