@@ -99,9 +99,14 @@
                 <h2 class="text-4xl md:text-6xl font-semibold tracking-tight">
                   <span id="greeting" class="bg-clip-text typewriter">Hej</span><span>, I'm Ash.</span>
                 </h2>
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+                  <a href="#work" class="glass rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition text-white text-sm md:text-base">View Work</a>
+                  <a href="#contact" class="glass rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition text-white text-sm md:text-base">Contact Me</a>
+                  <a href="#about" class="glass rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition text-white text-sm md:text-base">About Me</a>
+                </div>
             </div>
         </div>
-    </section>
+</section>
 
     <!-- about -->
     <section id="about" class="max-w-3xl mx-auto py-16 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out text-center">
@@ -143,6 +148,37 @@
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                     class="software-icon w-8 h-8 mb-2" alt="Figma" loading="lazy" decoding="async">
                 <p class="text-xs text-neutral-300">Figma</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- gallery -->
+    <section id="gallery" class="max-w-6xl mx-auto py-16 px-6 fade-in opacity-0 translate-y-4 transition-all duration-700 ease-out">
+        <h3 class="text-xl font-semibold mb-8 text-center">Photo Gallery</h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer gallery-item relative" data-full="./assets/photos/1.jpg" data-meta='{"brand":"Nikon","model":"Z fc","lens":"NIKKOR Z DX 16-50mm f/3.5-6.3 VR","iso":2000,"shutter":"1/125","aperture":"f/3.5"}'>
+                <img src="./assets/photos/1.jpg" alt="Gallery 1" class="w-full h-48 object-cover select-none" loading="lazy" decoding="async">
+                <img src="assets/photos/wm.png" alt="wm" class="absolute bottom-2 right-2 w-1/4 opacity-100 pointer-events-none select-none">
+            </div>
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer gallery-item relative" data-full="./assets/photos/2.jpg" data-meta='{"brand":"Nikon","model":"Z fc","lens":"NIKKOR Z DX 16-50mm f/3.5-6.3 VR","iso":2000,"shutter":"1/125","aperture":"f/3.5"}'>
+                <img src="./assets/photos/2.jpg" alt="Gallery 2" class="w-full h-48 object-cover select-none" loading="lazy" decoding="async">
+                <img src="assets/photos/wm.png" alt="wm" class="absolute bottom-2 right-2 w-1/4 opacity-100 pointer-events-none select-none">
+            </div>
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer gallery-item relative" data-full="./assets/photos/3.jpg" data-meta='{"brand":"Fujifilm","model":"GFX100S II","lens":"GF 80mm F1.7 R WR","iso":200,"shutter":"1/125","aperture":"f/8"}'>
+                <img src="./assets/photos/3.jpg" alt="Gallery 3" class="w-full h-48 object-cover select-none" loading="lazy" decoding="async">
+                <img src="assets/photos/wm.png" alt="wm" class="absolute bottom-2 right-2 w-1/4 opacity-100 pointer-events-none select-none">
+            </div>
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer gallery-item relative" data-full="./assets/photos/4.jpg" data-meta='{"brand":"Canon","model":"EOS R50 Mirrorless","lens":"EF 50mm f/1.8 STM + Adapter","iso":100,"shutter":"1/500","aperture":"f/5"}'>
+                <img src="./assets/photos/4.jpg" alt="Gallery 4" class="w-full h-48 object-cover select-none" loading="lazy" decoding="async">
+                <img src="assets/photos/wm.png" alt="wm" class="absolute bottom-2 right-2 w-1/4 opacity-100 pointer-events-none select-none">
+            </div>
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer gallery-item relative" data-full="./assets/photos/5.jpg" data-meta='{"brand":"Canon","model":"EOS R50 Mirrorless","lens":"EF 100mm f/2 USM + Adapter","iso":250,"shutter":"1/125","aperture":"f/7.1"}'>
+                <img src="./assets/photos/5.jpg" alt="Gallery 5" class="w-full h-48 object-cover select-none" loading="lazy" decoding="async">
+                <img src="assets/photos/wm.png" alt="wm" class="absolute bottom-2 right-2 w-1/4 opacity-100 pointer-events-none select-none">
+            </div>
+            <div class="glass rounded-2xl overflow-hidden cursor-pointer gallery-item relative" data-full="./assets/photos/6.jpg" data-meta='{"brand":"Canon","model":"EOS R50 Mirrorless","lens":"EF 100mm f/2 USM + Adapter","iso":800,"shutter":"1/1250","aperture":"f/2.8"}'>
+                <img src="./assets/photos/6.jpg" alt="Gallery 6" class="w-full h-48 object-cover select-none" loading="lazy" decoding="async">
+                <img src="assets/photos/wm.png" alt="wm" class="absolute bottom-2 right-2 w-1/4 opacity-100 pointer-events-none select-none">
             </div>
         </div>
     </section>
@@ -218,6 +254,14 @@
     <footer class="text-center py-8 text-neutral-500 text-xs fade-in">
         © <span id="year"></span> Ash. All rights reserved.
     </footer>
+
+    <div id="lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+        <button id="lightbox-close" class="absolute top-5 right-5 glass px-3 py-1 rounded text-sm">Close</button>
+        <div id="lightbox-meta" class="absolute top-5 left-5 right-24 text-neutral-200 bg-black/50 px-4 py-3 rounded-lg shadow hidden"></div>
+        <canvas id="lightbox-canvas" class="rounded-lg shadow-lg"></canvas>
+        <img id="lightbox-img" class="max-h-[80vh] max-w-[90vw] rounded-lg shadow-lg hidden object-contain" alt="Expanded image">
+        <img id="lightbox-wm" src="assets/photos/wm.png" alt="wm" class="absolute bottom-3 right-3 w-1/4 opacity-60 pointer-events-none select-none hidden">
+    </div>
 
     <!-- scripts -->
     <script>
@@ -329,10 +373,94 @@
           }
         });
       }
+      var lb=document.getElementById('lightbox');
+      var lbImg=document.getElementById('lightbox-img');
+      var lbCanvas=document.getElementById('lightbox-canvas');
+      var lbWm=document.getElementById('lightbox-wm');
+      var lbMeta=document.getElementById('lightbox-meta');
+      var lbCtx=lbCanvas?lbCanvas.getContext('2d'):null;
+      var lbClose=document.getElementById('lightbox-close');
+      var wm=new Image(); wm.src='assets/photos/wm.png';
+      var wmReady=false; wm.onload=function(){ wmReady=true; };
+      var g=document.getElementById('gallery');
+      [g, lb].forEach(function(node){ if(node){ node.addEventListener('contextmenu',function(e){ e.preventDefault(); },true); } });
+      function xorEncode(str,key){ var out=''; for(var i=0;i<str.length;i++){ var c=str.charCodeAt(i) ^ key.charCodeAt(i%key.length); out+=('0'+c.toString(16)).slice(-2);} return out; }
+      function xorDecode(hex,key){ var out=''; for(var i=0;i<hex.length;i+=2){ var b=parseInt(hex.substr(i,2),16); var c=b ^ key.charCodeAt((i/2)%key.length); out+=String.fromCharCode(c);} return out; }
+      var key='ashwmkey';
+      document.querySelectorAll('.gallery-item').forEach(function(card){
+        var full=card.getAttribute('data-full');
+        if(full){ var enc=xorEncode(full,key); card.setAttribute('data-xor',enc); card.removeAttribute('data-full'); }
+      });
+      document.querySelectorAll('.gallery-item').forEach(function(card){
+        card.addEventListener('click',function(){
+          var enc=card.getAttribute('data-xor');
+          var full=enc?xorDecode(enc,key):(card.querySelector('img')?.src||'');
+          var metaText='';
+          var meta=card.getAttribute('data-meta');
+          var brand=''; var details=''; var stats='';
+          if(meta){
+            try{
+              var m=JSON.parse(meta);
+              brand = m.brand || '';
+              details = [m.model,m.lens].filter(Boolean).join(' • ');
+              stats = ['ISO '+(m.iso||''),(m.shutter||''),(m.aperture||'')].filter(Boolean).join('  |  ');
+              metaText = [brand,details,stats].filter(Boolean).join(' • ');
+            }catch(_){}
+          }
+          if(!full||!lb) return;
+          lb.classList.remove('hidden');
+          if(lbWm){ lbWm.classList.remove('hidden'); }
+          if(lbMeta){
+            var esc=function(s){ return String(s).replace(/[&<>"']/g,function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'})[ch]; }); };
+            if(brand){
+              var second = [details,stats].filter(Boolean).join(' • ');
+              lbMeta.innerHTML = '<div class="text-xl md:text-2xl font-semibold">'+esc(brand)+'</div>' + (second?'<div class="mt-1 text-xs md:text-sm text-neutral-300">'+esc(second)+'</div>':'');
+            }else{
+              lbMeta.textContent = metaText;
+            }
+            lbMeta.classList.remove('hidden');
+          }
+          // Draw via canvas with watermark; fallback to <img>
+          if(lbCtx && lbCanvas){
+            var drawBitmap=function(bitmap){
+              var maxW=Math.floor(window.innerWidth*0.9);
+              var maxH=Math.floor(window.innerHeight*0.8);
+              var scale=Math.min(maxW/bitmap.width, maxH/bitmap.height, 1);
+              var cw=Math.floor(bitmap.width*scale);
+              var ch=Math.floor(bitmap.height*scale);
+              lbCanvas.width=cw; lbCanvas.height=ch;
+              lbImg.classList.add('hidden');
+              lbCtx.clearRect(0,0,cw,ch);
+              lbCtx.drawImage(bitmap,0,0,cw,ch);
+              if(wmReady){
+                var wmScale=Math.min(cw*0.2/wm.width, ch*0.2/wm.height);
+                var ww=Math.floor(wm.width*wmScale);
+                var wh=Math.floor(wm.height*wmScale);
+                var pad=12;
+                lbCtx.globalAlpha=0.5;
+                lbCtx.drawImage(wm,cw-ww-pad,ch-wh-pad,ww,wh);
+                lbCtx.globalAlpha=1;
+              }
+            };
+            fetch(full,{mode:'cors'}).then(function(r){ return r.blob(); }).then(function(blob){
+              if('createImageBitmap' in window){ return createImageBitmap(blob).then(drawBitmap); }
+              return new Promise(function(resolve,reject){ var im=new Image(); im.onload=function(){ drawBitmap(im); resolve(); }; im.onerror=reject; im.src=URL.createObjectURL(blob); });
+            }).catch(function(){ lbCanvas.width=0; lbCanvas.height=0; lbImg.src=full; lbImg.classList.remove('hidden'); });
+          }else{
+            lbImg.src=full;
+            lbImg.classList.remove('hidden');
+          }
+          var onEsc=function(ev){ if(ev.key==='Escape'){ lb.classList.add('hidden'); if(lbWm){ lbWm.classList.add('hidden'); } if(lbMeta){ lbMeta.classList.add('hidden'); lbMeta.innerHTML=''; } document.removeEventListener('keydown',onEsc);} };
+          document.addEventListener('keydown',onEsc);
+        });
+      });
+      if(lb){
+        lb.addEventListener('click',function(ev){ if(ev.target===lb){ lb.classList.add('hidden'); if(lbWm){ lbWm.classList.add('hidden'); } if(lbMeta){ lbMeta.classList.add('hidden'); lbMeta.innerHTML=''; } } });
+      }
+      if(lbClose && lb){ lbClose.addEventListener('click',function(){ lb.classList.add('hidden'); if(lbWm){ lbWm.classList.add('hidden'); } if(lbMeta){ lbMeta.classList.add('hidden'); lbMeta.innerHTML=''; } }); }
     });
     </script>
     <script src="./assets/pf.min.js"></script>
 </body>
 
 </html>
-
